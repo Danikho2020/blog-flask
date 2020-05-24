@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main %}                             
+<h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >Bienvenido a <br>
+   <strong>DanikBlog</strong></h3>
+<p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">Un lugar para opinar lo que se te cante</p>
+<div class="video_service_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+    <a href="/signup/" class="boxed-btn3">Registrarse</a> <a href="/login/" class="boxed-btn4">Ingresar</a>
+</div>
+{% endblock %}
+
+{% block two %}
+<img src="{{ url_for('static', filename='img/ilstrator/blog2.png')}}" alt="" width="95%" height="95%">
+<br><br>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block main %} 
+<div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >
+    <br><br>
+    <h2 class="blanco">Registrate!</h2><br>
+<form action="" class="form" method="POST" >
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+
+    {{form.username.label}} <br>
+    {{form.username}}
+    {% if form.errors %}
+        {% for error in form.errors.username%}
+            {% if error != 'x' %}
+                <p>{{error}}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <br><br>
+    {{form.password.label}} <br>
+    {{form.password}}
+    <br><br>
+    {{form.email.label}} <br>
+    {{form.email}}
+    <br><br>
+
+    <button class="btn" type="submit">Enviar</button>
+    <br><br><br><br> <br><br> <br>
+
+</form>
+</div>
+{% endblock %}
+
+{% block two %}
+<img src="{{ url_for('static', filename='img/ilstrator/registro.png')}}" alt="" width="95%" height="95%">
+<br><br>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block main %} 
+<div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s" >
+    <br><br>
+    <h2 class="blanco">{{mensaje}}</h2><br>
+<form action="" class="form" method="POST" >
+    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+
+    {{form.comment.label}} <br>
+    {{form.comment}}
+    {% if form.errors %}
+        {% for error in form.errors.comment%}
+            {% if error != 'x' %}
+                <p>{{error}}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <br><br>
+
+    <button class="btn" type="submit">Publicar</button>
+    <br><br><br><br> <br><br> <br>
+
+</form>
+</div>
+{% endblock %}
+
+{% block two %}
+<div style="overflow: auto; position: relative; top: 150px; bottom: unset; "  >
+    {% for comment in comments.items %}
+
+        <div class="card">
+            <p><strong>{{comment.username}}</strong> dijo:</p>
+            <h4>{{comment.text}}</h4>
+            <h6>{{comment.created_date}}</h6>
+        </div>
+    
+    <br><br><br>
+    {% endfor %}
+    <div class="card" style="background-color: aquamarine; text-align: center;">
+        {% if page != 1 %}
+    {% if page != total_pages %}
+        {% set siguiente = page + 1 %}
+        {% set anterior = page - 1 %}
+        <p> <a href="/home/{{anterior}}">anterior</a> Página {{page}} de {{total_pages}} <a href="/home/{{siguiente}}">siguiente</a></p>           
+    {% else %}
+        {% set anterior = page - 1 %}
+        <p> <a href="/home/{{anterior}}">anterior</a> Página {{page}} de {{total_pages}}</p>
+    {% endif %}
+{% else %}
+    {% if page != total_pages %}
+        {% set siguiente = page + 1 %}
+        <p>Página {{page}} de {{total_pages}} <a href="/home/{{siguiente}}">siguiente</a></p>            
+    {% endif %}
+{% endif %}
+    </div>
+</div>
+<br><br>
+
+{% endblock %}
