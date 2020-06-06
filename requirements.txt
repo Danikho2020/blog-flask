@@ -7,7 +7,7 @@ chardet==3.0.4
 Click==7.0
 colorama==0.4.3
 distlib==0.3.0
-Django==3.0.5
+Django==3.0.7
 dnspython==1.16.0
 docutils==0.16
 email-validator==1.0.5
